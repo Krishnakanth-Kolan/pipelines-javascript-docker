@@ -19,3 +19,11 @@ steps:
     repository: $(imageName)
     command: build
     Dockerfile: app/Dockerfile
+
+- task: Docker@2
+  displayName: Push image
+  inputs:
+    containerRegistry: 'MyDockerHub'
+    repository: '$(imageName)'
+    command: 'push'
+    tags: 'kanth321/$(imageName)'
